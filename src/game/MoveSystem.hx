@@ -20,8 +20,8 @@ class MoveSystem extends System{
 	override public function initialize(core:Core){
 		super.initialize(core);
 		
-        _moveCompId = _core.componentFactory.getIdByName("tags.move");
-        _posCompId = _core.componentFactory.getIdByName("physics.position");
+        _moveCompId = getId("tags.move");
+        _posCompId = getId("physics.position");
 		movingEntities = new Matcher();
         movingEntities.setRequirements([
                 _moveCompId,

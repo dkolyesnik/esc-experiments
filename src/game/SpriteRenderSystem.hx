@@ -35,9 +35,9 @@ class SpriteRenderSystem extends System
 	override public function initialize(core:Core) 
 	{
 		super.initialize(core);
-		_posCompId = core.componentFactory.getIdByName("physics.position");
-		_renderCompId = core.componentFactory.getIdByName("render.render");
-		_sprCompId = core.componentFactory.getIdByName("render.sprite");
+		_posCompId = getId("physics.position");
+		_renderCompId = getId("render.render");
+		_sprCompId = getId("render.sprite");
 		
 		_container = new Sprite();
 		Lib.current.stage.addChild(_container);
@@ -85,8 +85,6 @@ class SpriteRenderSystem extends System
 			
 			spr.sprite.x = pos.x;
 			spr.sprite.y = pos.y;
-			
 		}
 	}
-	
 }

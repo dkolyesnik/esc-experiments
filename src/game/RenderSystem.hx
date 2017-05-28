@@ -8,7 +8,10 @@ import esc.*;
  */
 class RenderSystem extends System
 {
-
+	@:matcher([
+	"render.render",
+     "physics.position"
+    ]
 	public var renderingEntities(default, null):Matcher;
 	var _renderCompId:Int;
 	var _posCompId:Int;
@@ -19,8 +22,8 @@ class RenderSystem extends System
 	{
 		super();
 		renderingEntities = new Matcher();
-		_renderCompId = _core.componentFactory.getIdByName("render.render");
-		_posCompId = _core.componentFactory.getIdByName("physics.position");
+		_renderCompId = getId("render.render");
+		_posCompId = getId("physics.position");
 		renderingEntities.setRequirements([
 											  _renderCompId,
 											  _posCompId
