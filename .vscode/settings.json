@@ -1,0 +1,21 @@
+// Поместите параметры в этот файл, чтобы перезаписать параметры по умолчанию и пользовательские параметры.
+{
+    "haxe.displayConfigurations": [ // one or more configurations for the haxe completion server
+        //["-cp", "src", "-js", "main.js"], // a configuration is array of arguments passed to the completion server
+        ["main.hxml"] // hxml file is an normal haxe argument too
+    ],
+    "haxe.displayServer": { // configuration for starting haxe completion server itself
+        "haxePath": "haxe", // path to the executable (default: `haxe`)
+        "arguments": ["-v"], // arguments before --wait (-v is useful for debugging)
+        "env": { // environment variables for the completion server
+            "HAXE_STD_PATH": "C:/HaxeToolkit/haxe/std",
+            "SOME_VAR": "some_value",
+        },
+
+        // platform-specific overrides of the keys above
+        // they will be merged into the default configuration
+        "windows": {},
+        "linux": {},
+        "osx": {}
+    }
+}

@@ -1,0 +1,11 @@
+--next
+
+-debug
+-D fdb
+
+-swf-version 11.6
+#-swf-version 25
+-swf-header 800:600:30:ffffff
+-swf bin/esc2.swf
+#-as3 bin/as3
+

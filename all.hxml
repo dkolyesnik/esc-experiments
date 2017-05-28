@@ -1,0 +1,32 @@
+#-lib mconsole
+#-lib haxecontracts
+#-D contracts-disabled	
+#-lib castle
+#-lib hxbit
+#-lib nullsafety
+#-lib buddy
+#-lib pathfinding
+-lib random
+-lib hscript
+
+#-lib sorcery-core
+#-lib sorcery-framework
+
+-cp src
+-main Main
+
+#-lib heaps
+#-D resourcesPath ../res
+
+#libs to test
+#-lib polygonal-core
+#-lib tink_lang
+#-lib thx.core
+#-lib haxe-strings
+
+#-resource libs/castle/br.cdb
+#-D dump=pretty
+#-dce std
+
+#for BigInt
+#-lib hxbitcoin
