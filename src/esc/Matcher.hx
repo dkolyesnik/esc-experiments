@@ -64,8 +64,11 @@ class Matcher
 		}
 		if (match)
 		{
-			_entities.push(entity);
-			_onAddEmitter.emit(entity);
+			//TODO optimize
+			if(_entities.indexOf(entity) < 0){
+				_entities.push(entity);
+				_onAddEmitter.emit(entity);
+			}
 		}
 	}
 

@@ -10,12 +10,19 @@ class ComponentFactory {
 	var _namesToId:Map<String, Int>;
 	var _names:Array<String>;
 	var _idToNames:Map<Int, String>;
-	var _counter = 0;
+	var _counter:Int;
 
 	public function new() {
+		_counter = 0;
 		_namesToId = new Map();
 		_idToNames = new Map();
 		_names = [];
+		_registerDefaultComponents();
+	}
+	
+	function _registerDefaultComponents(){
+		registerComponent("core.parent", ParentComponent);
+		registerComponent("core.children", ChildrenComponent);
 	}
 
 	public function get_size():Int{

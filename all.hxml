@@ -3,7 +3,7 @@
 #-D contracts-disabled	
 #-lib castle
 #-lib hxbit
-#-lib nullsafety
+-lib nullsafety
 #-lib buddy
 #-lib pathfinding
 -lib random
