@@ -1,5 +1,6 @@
 package esc;
 import haxe.ds.Vector;
+import sorcery.macros.Nullsafety.*;
 /**
  * ...
  * @author Dmitriy Kolesnik
@@ -26,40 +27,20 @@ class Entity
 		}
 	}
 
-	public function hasComponent(cid:Int)
+	public function hasComponent(cid:Int):Bool
 	{
 		if (_components[cid] == null && cid != _core.cids.parentComponentId)
 		{
-			var parentComp:ParentComponent = cast getComponent(_core.cids.parentComponentId);
-			if (parentComp != null)
-			{
-				//TODO check if component id overriden
-				//TODO make separate Entity for holding children
-				var parentEntity = _core.getEntityById(parentComp.parentId);
-				if (parentEntity != null)
-				{
-					return parentEntity.hasComponent(cid);
-				}
-			}
-			return false;
+			return safeGet(_getParent().hasComponent(cid), false);
 		}
 		return _components[cid] != null;
 	}
 
-	public function getComponent(cid:Int)
+	public function getComponent(cid:Int):IComponent
 	{
 		if (_components[cid] == null && cid != _core.cids.parentComponentId)
 		{
-			var parentComp:ParentComponent = cast getComponent(_core.cids.parentComponentId);
-			if (parentComp != null)
-			{
-				var parentEntity = _core.getEntityById(parentComp.parentId);
-				if (parentEntity != null)
-				{
-					return parentEntity.getComponent(cid);
-				}
-			}
-			return null;
+			return safeGet(_getParent().getComponent(cid), null);
 		}
 		return _components[cid];
 	}
@@ -128,5 +109,16 @@ class Entity
 
 		childrenComp.addChild(childEid);
 
+	}
+	
+	function _getParent():Entity{
+		var parentComp:ParentComponent = cast getComponent(_core.cids.parentComponentId);
+		if (parentComp != null)
+		{
+			//TODO check if component id overriden
+			//TODO make separate Entity for holding children
+			return _core.getEntityById(parentComp.parentId);
+		}
+		return null;
 	}
 }
